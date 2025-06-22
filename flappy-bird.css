@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #70c5ce 0%, #70c5ce 50%, #ded895 50%, #ded895 100%);
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+.game-container {
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#gameCanvas {
+    display: block;
+    background: linear-gradient(180deg, #4ec0ca 0%, #4ec0ca 80%, #ded895 80%, #ded895 100%);
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+.game-info {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.score {
+    font-size: 36px;
+    margin-bottom: 5px;
+}
+
+.high-score {
+    font-size: 18px;
+    opacity: 0.8;
+}
+
+.game-over, .start-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 100;
+}
+
+.game-over.show, .start-screen.show {
+    display: block;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+.game-over h2, .start-screen h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 36px;
+}
+
+.game-over p, .start-screen p {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+button {
+    background: #4ec0ca;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 0 #3da0a9;
+    position: relative;
+    top: 0;
+}
+
+button:hover {
+    background: #3da0a9;
+    transform: translateY(2px);
+    box-shadow: 0 3px 0 #2d8089;
+}
+
+button:active {
+    transform: translateY(5px);
+    box-shadow: none;
+}
+
+@media (max-width: 600px) {
+    #gameCanvas {
+        width: 320px;
+        height: 480px;
+    }
+    
+    .game-info {
+        font-size: 20px;
+    }
+    
+    .score {
+        font-size: 28px;
+    }
+}
